@@ -1,0 +1,2 @@
+class Determination < ApplicationRecord
+end
