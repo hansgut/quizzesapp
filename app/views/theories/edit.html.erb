@@ -1,0 +1,42 @@
+<% title " - Теория" %>
+<div class="row">
+  <%= form_for @theory do |f| %>
+  <div class="col s12">
+    Название: <%= f.text_field :title %>
+  </div>
+  <div class="col s12">
+    Текст: <%= f.text_area :body, id: 'wysiwyg'%>
+  </div>
+  <div class="col s12">
+    <%= f.submit 'Изменить', class:'waves-effect waves-light btn col s12'%>
+  </div>
+  <% end %>
+</div>
+<script type="text/javascript">
+$(function() {
+  $('#wysiwyg').froalaEditor({
+    heightMin: '300px',
+    language: 'ru',
+    fileUploadURL: '/upload_file',
+    fileUploadParams: {
+      id: 'my_editor'
+    },
+    toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough',
+    'subscript', 'superscript', 'fontFamily', 'fontSize', '|', 'color', 'emoticons',
+     'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL',
+     'formatUL', 'outdent', 'indent', '-', 'insertLink', 'insertImage','insertVideo', 'insertFile',
+     'insertTable', '|', 'quote', 'insertHR', 'undo', 'redo', 'clearFormatting',
+     'selectAll', 'html'],
+    colorsBackground: [
+      '#15E67F', '#E3DE8C', '#D8A076', '#D83762', '#76B6D8', 'REMOVE',
+      '#1C7A90', '#249CB8', '#4ABED9', '#FBD75B', '#FBE571', '#FFFFFF'
+    ],
+    colorsDefaultTab: 'background',
+    colorsStep: 6,
+    colorsText: [
+      '#15E67F', '#E3DE8C', '#D8A076', '#D83762', '#76B6D8', 'REMOVE',
+      '#1C7A90', '#249CB8', '#4ABED9', '#FBD75B', '#FBE571', '#FFFFFF'
+    ]
+  })
+});
+</script>

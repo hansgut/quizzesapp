@@ -1,0 +1,31 @@
+<% title " - Логин" %>
+<div class="row">
+  <div class="col s12 m6 l4 push-l3 push-m3">
+    <h2>Логин</h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, 'Пароль' %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, 'Запомнить меня' %>
+      </div>
+    <% end -%>
+    <br>
+    <div class="actions">
+      <%= f.submit "Логин", class: 'waves-effect waves-light btn col s12' %>
+    </div>
+    <% end %>
+    <br><br><br>
+    <%= render "devise/shared/links" %>
+  </div>
+
+</div>

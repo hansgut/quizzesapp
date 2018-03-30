@@ -1,2 +1,16 @@
-<h1>Determinations#new</h1>
-<p>Find me in app/views/determinations/new.html.erb</p>
+<% title " - Глоссарий" %>
+<div class="container cen">
+  <div class="row">
+    <%= form_for @determination do |f| %>
+    <div class="col s12">
+      Определение: <%= f.text_field :title %>
+    </div>
+    <div class="col s12">
+      Пояснение: <%= f.text_area :body, class:'materialize-textarea'%>
+    </div>
+    <div class="col s12">
+      <%= f.submit 'Добавить', class:'waves-effect waves-light btn col s12'%>
+    </div>
+    <% end %>
+  </div>
+</div>
