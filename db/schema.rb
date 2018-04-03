@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180329202957) do
+ActiveRecord::Schema.define(version: 20180403065023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string "body"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "atrue"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "attempts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "quiz_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "answers"
+    t.index ["quiz_id"], name: "index_attempts_on_quiz_id"
+    t.index ["user_id"], name: "index_attempts_on_user_id"
+  end
 
   create_table "determinations", force: :cascade do |t|
     t.string "title"
@@ -25,6 +44,20 @@ ActiveRecord::Schema.define(version: 20180329202957) do
   create_table "practices", force: :cascade do |t|
     t.string "title"
     t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "title"
+    t.bigint "quiz_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_id"], name: "index_questions_on_quiz_id"
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,4 +87,8 @@ ActiveRecord::Schema.define(version: 20180329202957) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "attempts", "quizzes"
+  add_foreign_key "attempts", "users"
+  add_foreign_key "questions", "quizzes"
 end

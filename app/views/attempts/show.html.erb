@@ -1,0 +1,25 @@
+<% title '- Проверка знаний' %>
+<% q_c = 0 %>
+<% a_c = 0 %>
+<div class="row">
+  <div class="col l4 push-l4">
+    <h4><%= @quiz.title %></h4>
+    <ol>
+      <% @quiz.questions.each do |q| %>
+        <h5><li><%= q.title %></li></h5>
+          <ol>
+            <% q.answers.each do |a| %>
+              <span class="flow-text">
+                <li style="color:<%= check_answer(a.atrue, @attempt.answers[q_c][a_c]) %>">
+                  <%= a.body %><%= if a.atrue then '<h6> - правильный ответ </h6>'.html_safe end %>
+                </li>
+              </span>
+              <% a_c += 1 %>
+            <% end %>
+            <% a_c = 0 %>
+            <% q_c += 1 %>
+          </ol>
+      <% end %>
+    </ol>
+  </div>
+</div>

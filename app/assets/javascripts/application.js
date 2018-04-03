@@ -47,10 +47,10 @@
 //= require_tree .
 
 
-
 $(document).ready(function(){
   $('.dropdown-button').dropdown();
   $(".button-collapse").sideNav();
+  $('.tabs').tabs();
 });
 
 function cross_click() {

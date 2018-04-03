@@ -2,7 +2,7 @@ class PracticesController < ApplicationController
   def index
     @count = 1
     if params[:search]
-      @practices = Practice.search(params[:search].capitalize).order(:title)
+      @practices = Practice.search(params[:search]).order(:title)
     else
       @practices = Practice.order(:title)
     end
@@ -19,7 +19,6 @@ class PracticesController < ApplicationController
   def create
     if current_user.try(:admin?)
       @practice = Practice.new(practice_params)
-      @practice.title.capitalize!
       if @practice.save
         redirect_to practice_path(@practice)
       else

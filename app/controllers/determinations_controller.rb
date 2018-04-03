@@ -2,7 +2,7 @@ class DeterminationsController < ApplicationController
   def index
     @count = 1
     if params[:search]
-      @determinations = Determination.search(params[:search].capitalize).order(:title)
+      @determinations = Determination.search(params[:search]).order(:title)
     else
       @determinations = Determination.order(:title)
     end
@@ -19,7 +19,6 @@ class DeterminationsController < ApplicationController
   def create
     if current_user.try(:admin?)
       @determination = Determination.new(determination_params)
-      @determination.title.capitalize!
       if @determination.save
         redirect_to determinations_path
       else

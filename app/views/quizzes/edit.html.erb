@@ -1,0 +1,23 @@
+<% title " - Проверка знаний" %>
+<div class="">
+
+    <%= form_for @quiz do |builder| %>
+      <div class="row">
+        <div class="col s12 m8 push-m2 l4 push-l4">
+          Название теста: <%= builder.text_field :title %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m8 push-m2 l4 push-l4">
+          <%= render 'form', f: builder %>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col s12 l4 push-l4">
+          <%= builder.submit 'Изменить', class:'waves-effect waves-light btn col s12'%>
+        </div>
+      </div>
+    <% end %>
+
+</div>

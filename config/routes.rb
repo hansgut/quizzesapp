@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :attempts
+  resources :quizzes
   resources :theories
   resources :diagrams
   resources :determinations
-  resources :homes
   resources :practices
   post "/upload_file" => "upload#upload_file", :as => :upload_file
   post "/upload_image" => "upload#upload_image", :as => :upload_image

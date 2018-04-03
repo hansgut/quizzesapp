@@ -2,7 +2,7 @@ class TheoriesController < ApplicationController
   def index
     @count = 1
     if params[:search]
-      @theories = Theory.search(params[:search].capitalize).order(:title)
+      @theories = Theory.search(params[:search]).order(:title)
     else
       @theories = Theory.order(:title)
     end
@@ -19,7 +19,6 @@ class TheoriesController < ApplicationController
   def create
     if current_user.try(:admin?)
       @theory = Theory.new(theory_params)
-      @theory.title.capitalize!
       if @theory.save
         redirect_to theory_path(@theory)
       else

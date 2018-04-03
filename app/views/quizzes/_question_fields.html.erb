@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col s12">
+    <fieldset>
+      <div class="row">
+        <div class="col s12">
+          Вопрос: <%= f.text_area :title, class:'materialize-textarea'%>
+          <%= link_to 'Удалить вопрос', '#', class: 'remove_fields' %>
+        </div>
+      </div>
+        <%= f.fields_for :answers do |builder|  %>
+        <%= render 'answer_fields', f: builder %>
+        <% end %>
+        <%= link_to_add_fields "Добавить", f, :answers %>
+    </fieldset>
+  </div>
+</div>

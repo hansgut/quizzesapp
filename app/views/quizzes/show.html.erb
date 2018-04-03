@@ -1,0 +1,18 @@
+<% title '- Проверка знаний' %>
+<div class="row">
+  <div class="col l4 push-l4">
+    <h4><%= @quiz.title %></h4>
+    <ol>
+      <% @quiz.questions.each do |q| %>
+        <h5><li><%= q.title %></li></h5>
+          <ol>
+            <% q.answers.each do |a| %>
+              <span class="flow-text">
+                <li style="color:<%= if a.atrue then 'green;' end %>"><%= a.body %>
+                </li></span>
+            <% end %>
+          </ol>
+      <% end %>
+    </ol>
+  </div>
+</div>

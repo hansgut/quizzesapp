@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col s12">
+    <fieldset>
+      Ответ: <%= f.text_field :body%>
+      <%= f.check_box :atrue %><%= f.label :atrue, 'Правильный ответ', id:'atrue'%>
+      <%= f.hidden_field :_destroy %>
+      <%= link_to 'Удалить ответ', '#', class: 'remove_fields' %>
+      <!-- <%= f.label :_destroy, 'Удалить', id:'_destroy'%> -->
+    </fieldset>
+  </div>
+</div>

@@ -15,7 +15,7 @@
       <div id="menu">
 
         <ul id="slide-out" class="side-nav fixed">
-          <%= link_to homes_path do %>
+          <%= link_to root_path do %>
           <li>
             <img src="https://adukar.by/images/photo/logo-mgke.png" alt="" width="300px" >
           </li>
@@ -29,6 +29,9 @@
           </li>
           <li>
             <%= link_to 'Практика', practices_path %>
+          </li>
+          <li>
+            <%= link_to 'Проверка знаний', quizzes_path %>
           </li>
           <li>
             <%= link_to 'Создание диаграмм', diagrams_path %>

@@ -1,0 +1,38 @@
+    <%= form_tag attempts_path do %>
+<div class="row">
+  <div class="col s12" style="min-height:350px">
+    <ul id="tabs-swipe-demo" class="tabs z-depth-1">
+      <% @quiz.questions.each do |q| %>
+        <li class="tab"><a class="teal-text" href="#test-swipe-<%= @q_c %>">Вопрос<%= " #{@q_c+1}" %></a></li>
+        <% @q_c += 1 %>
+      <% end %>
+      <div class="indicator teal" style="z-index:1"></div>
+    </ul>
+
+      <% @q_c = 0  %>
+      <% @quiz.questions.each do |q| %>
+      <div id="test-swipe-<%= @q_c %>" class="col s12 tab-info">
+        <br>
+        <span class="flow-text"><%= q.title %></span>
+        <br>
+        <% q.answers.each do |a| %>
+          <br>
+          <%= hidden_field_tag "#{@q_c}_#{@a_c}".to_sym, 0, id: 'l'%>
+          <%= check_box_tag "#{@q_c}_#{@a_c}".to_sym %>
+          <%= label_tag "#{@q_c}_#{@a_c}".to_sym, a.body, id: "#{@q_c}_#{@a_c}", class:'black-text'%><br>
+          <% @a_c += 1 %>
+        <% end %>
+        <% @a_c = 0 %>
+        <% @q_c += 1 %>
+      </div>
+      <% end %>
+      <%= hidden_field_tag :quiz_id, @quiz.id%>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m6 push-m3 l4 push-l4">
+    <%= submit_tag 'Завершить', class:'waves-effect waves-light btn col s12 disabled', id:'confirm' %>
+  </div>
+</div>
+<% end %>
