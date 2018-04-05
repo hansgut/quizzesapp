@@ -10,7 +10,7 @@
         <%= f.fields_for :answers do |builder|  %>
         <%= render 'answer_fields', f: builder %>
         <% end %>
-        <%= link_to_add_fields "Добавить", f, :answers %>
+        <%= link_to_add_fields "Добавить ответ", f, :answers %>
     </fieldset>
   </div>
 </div>

@@ -7,13 +7,13 @@
           <li class="collection-item">
             <div>
               <%= link_to q.title, {controller: 'attempts', action: 'new', quiz: q.id} %>
-              <%= link_to quiz_path(q), class: 'secondary-content', method: :delete, data: { confirm: 'Вы уверены?' } do %>
-                <i class="material-icons">delete_forever</i>
-              <% end %>
-              <%= link_to edit_quiz_path(q), class:'secondary-content' do %>
-                <i class="material-icons">edit</i>
-              <% end %>
               <% if current_user.try(:admin?) %>
+                <%= link_to quiz_path(q), class: 'secondary-content', method: :delete, data: { confirm: 'Вы уверены?' } do %>
+                  <i class="material-icons">delete_forever</i>
+                <% end %>
+                <%= link_to edit_quiz_path(q), class:'secondary-content' do %>
+                  <i class="material-icons">edit</i>
+                <% end %>
                 <%= link_to quiz_path(q), class: 'secondary-content' do %>
                   <i class="material-icons">search</i>
                 <% end %>
