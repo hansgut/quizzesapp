@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col s12 m3 z-depth-1" style="min-height:730px;">
+    <p class="flow-text"><strong>Микро-блог</strong></p>
+    <blockquote>
+      В ближайшее время будут добавлены лабораторные работы, лекции и тесты.
+    </blockquote>
+  </div>
+  <div class="col s12 m1">
+
+  </div>
+  <div class="col s12 m8 z-depth-1" style="min-height:730px;">
+    <p class="flow-text"><strong>Последние обновления</strong></p>
+    <p class="flow-text">Глоссарий: <%= link_to @last_determination.title, determination_path(@last_determination.id) %></p>
+    <p class="flow-text">Теория: <%= link_to @last_theory.title, theory_path(@last_theory.id) %></p>
+    <p class="flow-text">Практика: <%= link_to @last_practice.title, practice_path(@last_practice.id) %></p>
+    <p class="flow-text">Проверка знаний: <%= link_to @last_quiz.title, {controller: 'attempts', action: 'new', quiz: @last_quiz.id} %></p>
+  </div>
+</div>
