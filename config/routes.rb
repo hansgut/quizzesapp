@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'helpersections/index'
+
   devise_for :users
   resources :attempts
   resources :quizzes
