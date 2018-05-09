@@ -1,0 +1,2 @@
+class Micromessage < ApplicationRecord
+end

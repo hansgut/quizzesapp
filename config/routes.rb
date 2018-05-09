@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :diagrams
   resources :determinations
   resources :practices
+  resources :micromessages
   post "/upload_file" => "upload#upload_file", :as => :upload_file
   post "/upload_image" => "upload#upload_image", :as => :upload_image
   get "/download_file/:name" => "upload#access_file", :as => :upload_access_file, :name => /.*/

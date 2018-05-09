@@ -4,5 +4,7 @@ class HomesController < ApplicationController
     @last_practice = Practice.last
     @last_quiz = Quiz.last
     @last_determination = Determination.last
+    @message = Micromessage.new
+    @messages = Micromessage.all
   end
 end
