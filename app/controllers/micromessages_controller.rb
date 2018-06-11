@@ -7,6 +7,14 @@ class MicromessagesController < ApplicationController
     end
   end
 
+  def destroy
+    if current_user.try(:admin?)
+      @message = Micromessage.find(params[:id])
+      @message.destroy
+      redirect_to root_path
+    end
+  end
+
   private
   def micromessage_params
     params.require(:micromessage).permit(:body)

@@ -4,6 +4,11 @@
     <% @messages.each do |message| %>
     <blockquote>
       <%= message.body %>
+      <% if current_user.try(:admin?) %>
+        <%= link_to micromessage_path(message), class: 'secondary-content',method: :delete, data: { confirm: 'Вы уверены?' } do %>
+          <i class="material-icons red-text">delete</i>
+        <% end %>
+      <% end %>
     </blockquote>
     <% end %>
   </div>
