@@ -12,10 +12,10 @@
   </div>
   <div class="col s12 m8 z-depth-1" style="min-height:600px;">
     <p class="flow-text"><strong>Последние обновления</strong></p>
-    <p class="flow-text">Глоссарий: <%= link_to @last_determination.title, determination_path(@last_determination.id) %></p>
-    <p class="flow-text">Теория: <%= link_to @last_theory.title, theory_path(@last_theory.id) %></p>
-    <p class="flow-text">Практика: <%= link_to @last_practice.title, practice_path(@last_practice.id) %></p>
-    <p class="flow-text">Проверка знаний: <%= link_to @last_quiz.title, {controller: 'attempts', action: 'new', quiz: @last_quiz.id} %></p>
+    <p class="flow-text">Глоссарий: <%= if @last_determination then link_to @last_determination.title, determination_path(@last_determination.id) else 'нет' end %></p>
+    <p class="flow-text">Теория: <%= if @last_theory then link_to @last_theory.title, theory_path(@last_theory.id) else 'нет' end %></p>
+    <p class="flow-text">Практика: <%= if @last_practice then link_to @last_practice.title, practice_path(@last_practice.id)  else 'нет' end %></p>
+    <p class="flow-text">Проверка знаний: <%= if @last_quiz then link_to @last_quiz.title, {controller: 'attempts', action: 'new', quiz: @last_quiz.id}   else 'нет' end %></p>
   </div>
 </div>
 <% if current_user.try(:admin?) %>
