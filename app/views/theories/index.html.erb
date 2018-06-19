@@ -24,6 +24,7 @@
 <br><br>
 <div class="row">
 <% @theories.each do |theory| %>
+<%= if @count % 3 == 0 then '<div class="row">'.html_safe end %>
   <div class="col s1<%= current_user.try(:admin?)? '1': '2' %> m<%= current_user.try(:admin?)? '5': '6' %> l<%= current_user.try(:admin?)? '3': '4' %>">
     <%= link_to theory_path(theory) do %>
       <div class="card-panel teal shadow-t">
@@ -42,6 +43,7 @@
   </ul>
 </div>
 <% end %>
+<%= if @count % 3 == 0 then '</div>'.html_safe end%>
 <% @count += 1 %>
 <% end %>
 </div>
