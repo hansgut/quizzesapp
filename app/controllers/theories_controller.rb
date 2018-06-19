@@ -2,9 +2,9 @@ class TheoriesController < ApplicationController
   def index
     @count = 1
     if params[:search]
-      @theories = Theory.search(params[:search]).order(:title)
+      @theories = Theory.search(params[:search]).order('title ASC')
     else
-      @theories = Theory.order(:title)
+      @theories = Theory.order('title ASC')
     end
   end
 
